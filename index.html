@@ -91,19 +91,6 @@
             display:none;
         }
 
-        /* Estilo para a trilha visual de elegibilidade */
-        .kit-step::after {
-            content: '';
-            position: absolute;
-            left: 24px;
-            top: 48px;
-            width: 2px;
-            height: calc(100% - 20px);
-            background-color: #F3F4F6;
-            z-index: 0;
-        }
-        .kit-step:last-child::after { display: none; }
-
         /* Estilo para as ilustrações dos kits */
         .kit-illustration-container {
             background-color: #FFF;
@@ -118,9 +105,6 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-        .hover-card:hover .kit-illustration-container {
-            background-color: #FFF5F5;
         }
     </style>
 </head>
@@ -139,17 +123,15 @@
                     </a>
                 </div>
 
-                <!-- Navegação Desktop (ATUALIZADA) -->
                 <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
                     <a href="javascript:switchView('voce')" class="text-ifood-gray hover:text-ifood-red transition">Início</a>
                     <a href="#servicos" class="text-ifood-gray hover:text-ifood-red transition">Serviços</a>
-                    <!-- Botão Mimos direcionado para Elegibilidade -->
                     <a href="javascript:switchView('elegibilidade')" class="text-ifood-gray hover:text-ifood-red transition">Mimos</a>
                     <a href="#mural" class="text-ifood-gray hover:text-ifood-red transition">Mural iFamily</a>
                 </nav>
 
                 <div class="hidden lg:flex items-center space-x-4">
-                    <div class="bg-gray-100 p-1 rounded-full flex items-center text-sm font-medium">
+                    <div class="bg-gray-100 p-1 rounded-full flex items-center text-sm font-medium border border-gray-200">
                         <button id="btn-voce" onclick="switchView('voce')" class="px-4 py-1.5 rounded-full bg-white shadow-sm text-ifood-red transition-all">Para Você</button>
                         <button id="btn-lideranca" onclick="switchView('lideranca')" class="px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-700 transition-all">Para Liderança</button>
                     </div>
@@ -166,15 +148,11 @@
                 </div>
             </div>
         </div>
-
-        <!-- Menu Mobile Dropdown (ATUALIZADO) -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 pb-4 px-4 shadow-lg absolute w-full z-50">
-            <div class="flex flex-col space-y-3 pt-4">
-                <button onclick="switchView('voce')" class="text-left text-gray-700 font-medium p-2 hover:bg-ifood-pink rounded-lg">Página Inicial</button>
-                <button onclick="switchView('elegibilidade')" class="text-left text-gray-700 font-medium p-2 hover:bg-ifood-pink rounded-lg">Como ganhar os Mimos</button>
-                <div class="border-t border-gray-100 my-2 pt-2">
-                    <button onclick="switchView('lideranca')" class="text-left text-gray-500 text-sm p-2 hover:text-ifood-red">Visão: Liderança</button>
-                </div>
+            <div class="flex flex-col space-y-3 pt-4 font-medium">
+                <button onclick="switchView('voce')" class="text-left p-2 hover:bg-ifood-pink rounded-lg">Página Inicial</button>
+                <button onclick="switchView('elegibilidade')" class="text-left p-2 hover:bg-ifood-pink rounded-lg">Mimos e Elegibilidade</button>
+                <button onclick="switchView('lideranca')" class="text-left p-2 hover:bg-ifood-pink rounded-lg text-ifood-red">Guia da Liderança</button>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSe5gKxgQ1jk9NJwjoM3w_6ycox5UKKKylKq8d48cDRFdAiNzA/viewform" target="_blank" class="bg-ifood-red text-white text-center p-3 rounded-xl font-bold mt-2">Inscreva-se</a>
             </div>
         </div>
@@ -185,6 +163,7 @@
     <!-- ========================================== -->
     <main id="view-voce" class="flex-grow">
         
+        <!-- Hero Section -->
         <section id="inicio" class="py-16 md:py-24 bg-white relative overflow-hidden">
             <div class="absolute top-0 right-0 w-96 h-96 bg-ifood-pink rounded-full opacity-50 blur-3xl -translate-y-1/2 translate-x-1/3"></div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -214,9 +193,9 @@
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm italic text-blue-800">
-                                <div class="bg-white bg-opacity-60 p-4 rounded-xl border border-blue-100">“Será que vou conseguir manter meu ritmo?”</div>
-                                <div class="bg-white bg-opacity-60 p-4 rounded-xl border border-blue-100">“Como me posicionar nesse momento?”</div>
-                                <div class="bg-white bg-opacity-60 p-4 rounded-xl border border-blue-100">“O que faz sentido para minha carreira agora?”</div>
+                                <div class="bg-white bg-opacity-60 p-4 rounded-xl border border-blue-100 shadow-sm">“Será que vou conseguir manter meu ritmo?”</div>
+                                <div class="bg-white bg-opacity-60 p-4 rounded-xl border border-blue-100 shadow-sm">“Como me posicionar nesse momento?”</div>
+                                <div class="bg-white bg-opacity-60 p-4 rounded-xl border border-blue-100 shadow-sm">“O que faz sentido para minha carreira agora?”</div>
                             </div>
                             <p class="text-blue-900 font-bold text-lg mb-6">A mentoria existe para te apoiar exatamente nesse ponto.</p>
                             <details class="group bg-white rounded-2xl border border-blue-100 overflow-hidden shadow-sm transition-all duration-300">
@@ -226,15 +205,15 @@
                                 </summary>
                                 <div class="p-6 md:p-8 border-t border-blue-50 bg-white">
                                     <div class="max-w-3xl text-gray-700 leading-relaxed space-y-4">
-                                        <h4 class="font-bold text-gray-900 text-xl border-b pb-2">Como funciona esse apoio</h4>
+                                        <h4 class="font-bold text-gray-900 text-xl border-b pb-2">Entenda a Mentoria</h4>
                                         <p>Ao longo da sua jornada, você terá acesso a sessões de mentoria pensadas para te ajudar a refletir, organizar e tomar decisões com mais clareza.</p>
                                         <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                                            <h5 class="font-bold text-blue-900 mb-3 text-sm uppercase">As conversas consideram seu contexto real:</h5>
+                                            <h5 class="font-bold text-blue-900 mb-3 text-sm uppercase tracking-wide">As conversas consideram seu contexto real:</h5>
                                             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                                                <li>• mudanças de rotina</li>
-                                                <li>• dúvidas sobre performance</li>
-                                                <li>• ajustes de ritmo</li>
-                                                <li>• próximos passos</li>
+                                                <li class="flex items-center gap-2 font-medium"><i class="fa-solid fa-check text-green-500"></i> Mudanças de rotina</li>
+                                                <li class="flex items-center gap-2 font-medium"><i class="fa-solid fa-check text-green-500"></i> Dúvidas sobre performance</li>
+                                                <li class="flex items-center gap-2 font-medium"><i class="fa-solid fa-check text-green-500"></i> Ajustes de ritmo</li>
+                                                <li class="flex items-center gap-2 font-medium"><i class="fa-solid fa-check text-green-500"></i> Próximos passos de carreira</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -243,87 +222,20 @@
                         </div>
                     </div>
 
-                    <!-- BANNER TRILHA DE MIMOS -->
-                    <div id="banner-elegibilidade" class="bg-gradient-to-r from-red-50 to-white border-l-4 border-ifood-red p-6 rounded-r-2xl mb-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 group hover:shadow-md transition-all">
+                    <!-- Banner de Mimos -->
+                    <div class="bg-gradient-to-r from-red-50 to-white border-l-4 border-ifood-red p-6 rounded-r-2xl mb-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 group">
                         <div class="flex items-center gap-5">
-                            <div class="w-14 h-14 bg-ifood-red text-white rounded-full flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                            <div class="w-14 h-14 bg-ifood-red text-white rounded-full flex items-center justify-center text-2xl shrink-0">
                                 <i class="fa-solid fa-gift"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-ifood-dark text-lg">Quer saber como ganhar os mimos do programa?</h3>
-                                <p class="text-gray-600 text-sm">Existem tarefas simples para cada fase. Clique para ver sua trilha de conquistas!</p>
+                                <h3 class="font-bold text-ifood-dark text-lg">Como ganhar os mimos do programa?</h3>
+                                <p class="text-gray-600 text-sm">Cumpra as tarefas de cada fase para desbloquear seus kits.</p>
                             </div>
                         </div>
-                        <button onclick="switchView('elegibilidade')" class="bg-ifood-red text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-ifood-darkred transition shadow-md whitespace-nowrap">
-                            Conhecer as Regras
+                        <button onclick="switchView('elegibilidade')" class="bg-ifood-red text-white px-6 py-3 rounded-xl font-bold hover:bg-ifood-darkred transition shadow-md whitespace-nowrap">
+                            Ver Trilha de Mimos
                         </button>
-                    </div>
-
-                    <!-- VITRINE DE MIMOS PREMIUM -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                        <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover-card flex flex-col h-full">
-                            <div class="kit-illustration-container">
-                                <svg width="100" height="100" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="20" y="20" width="80" height="80" rx="12" fill="#FCE7E7"/>
-                                    <path d="M40 75C40 71 43 68 47 68H55V82H45C42 82 40 80 40 75Z" fill="#EA1D2C"/>
-                                    <path d="M65 75C65 71 68 68 72 68H80V82H70C67 82 65 80 65 75Z" fill="#EA1D2C"/>
-                                    <rect x="75" y="35" width="22" height="30" rx="3" fill="#EA1D2C" transform="rotate(-5 75 35)"/>
-                                    <rect x="35" y="30" width="35" height="42" rx="4" fill="#374151" fill-opacity="0.1" stroke="#374151" stroke-opacity="0.2"/>
-                                    <path d="M25 60V80H40V60L32.5 54L25 60Z" fill="#FFF" stroke="#E5E7EB"/>
-                                </svg>
-                            </div>
-                            <h4 class="font-bold text-ifood-red mb-2 text-lg">Kit Mamãe</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">Itens para a gestante, neste momento especial e cercado de cuidados.</p>
-                        </div>
-
-                        <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover-card flex flex-col h-full">
-                            <div class="kit-illustration-container">
-                                <svg width="100" height="100" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="20" y="20" width="80" height="80" rx="12" fill="#F0F9FF"/>
-                                    <rect x="30" y="55" width="40" height="35" rx="6" fill="#9CA3AF"/>
-                                    <path d="M38 55V48C38 42 45 40 50 40C55 40 62 42 62 48V55" stroke="#4B5563" stroke-width="3"/>
-                                    <path d="M70 45L85 45L90 55L85 60V85L70 85V60L65 55L70 45Z" fill="#EA1D2C"/>
-                                    <rect x="80" y="25" width="14" height="25" rx="4" fill="#FFF" stroke="#E5E7EB"/>
-                                    <rect x="25" y="30" width="12" height="22" rx="2" fill="#FDE68A"/>
-                                </svg>
-                            </div>
-                            <h4 class="font-bold text-ifood-red mb-2 text-lg">Kit Bebe</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">Este kit fofo com vários itens para seu bebe, inclusive o uniforme de 'Foodlovinho'.</p>
-                        </div>
-
-                        <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover-card flex flex-col h-full">
-                            <div class="kit-illustration-container">
-                                <svg width="100" height="100" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="20" y="20" width="80" height="80" rx="12" fill="#ECFDF5"/>
-                                    <path d="M30 65C30 60 35 58 40 58H70C75 58 80 60 80 65V85H30V65Z" fill="white" stroke="#E5E7EB" stroke-width="2"/>
-                                    <rect x="82" y="70" width="22" height="14" rx="5" fill="#BFDBFE"/>
-                                    <rect x="35" y="35" width="45" height="25" rx="4" fill="#D1FAE5" stroke="#6EE7B7"/>
-                                    <path d="M85 30L100 65H80L85 30Z" fill="#FEE2E2" stroke="#FCA5A5"/>
-                                </svg>
-                            </div>
-                            <h4 class="font-bold text-ifood-red mb-2 text-lg">Kit Nascimento</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">Kits super úteis para o dia a dia da nova rotina familiar com nossa seguradora.</p>
-                        </div>
-
-                        <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover-card flex flex-col h-full">
-                            <div class="kit-illustration-container">
-                                <svg width="100" height="100" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="20" y="20" width="80" height="80" rx="12" fill="#FEFCE8"/>
-                                    <g transform="rotate(-5 50 50)">
-                                        <rect x="30" y="35" width="40" height="55" rx="2" fill="white" stroke="#D1D5DB"/>
-                                        <text x="35" y="48" fill="#EA1D2C" font-size="5" font-weight="bold" font-family="sans-serif">remédio</text>
-                                    </g>
-                                    <g transform="rotate(8 70 50)">
-                                        <rect x="50" y="40" width="40" height="55" rx="2" fill="white" stroke="#D1D5DB"/>
-                                        <text x="55" y="55" fill="#EA1D2C" font-size="5" font-weight="bold" font-family="sans-serif">leitinho</text>
-                                    </g>
-                                    <circle cx="90" cy="90" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2"/>
-                                    <text x="85" y="96" fill="#B45309" font-size="16" font-weight="900">$</text>
-                                </svg>
-                            </div>
-                            <h4 class="font-bold text-ifood-red mb-2 text-lg">Reembolso Inicial</h4>
-                            <p class="text-[10px] text-gray-600 leading-relaxed font-medium">Até $640 em despesas iniciais liberados no Portal de Benefícios após a inclusão do dependente.</p>
-                        </div>
                     </div>
 
                     <a href="#jornada-timeline" class="bg-ifood-red hover:bg-ifood-darkred text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg inline-flex items-center gap-3">
@@ -333,7 +245,7 @@
             </div>
         </section>
 
-        <!-- Timeline Section -->
+        <!-- Timeline Principal -->
         <section id="jornada-timeline" class="py-12 bg-white border-b border-gray-100 sticky top-20 z-40 shadow-sm hidden md:block">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center relative">
@@ -358,7 +270,7 @@
             </div>
         </section>
 
-        <!-- Detalhamento das Fases -->
+        <!-- Detalhamento das Fases da Jornada -->
         <div class="bg-ifood-bg py-12 space-y-12">
             
             <!-- 1. TEMPO DE ACOLHER -->
@@ -501,51 +413,33 @@
         <section id="servicos" class="py-20 bg-white border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-ifood-dark">Serviços do Programa</h2>
-                <p class="text-ifood-gray mb-12 max-w-2xl mx-auto">Conte com o apoio de especialistas e benefícios estruturais pensados para o seu bem-estar.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Mentoria de Carreira -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
                     <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover-card flex flex-col items-center text-center">
-                        <div class="w-20 h-20 bg-red-50 text-ifood-red rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner">
-                            <i class="fa-solid fa-comments"></i>
-                        </div>
+                        <div class="w-20 h-20 bg-red-50 text-ifood-red rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner"><i class="fa-solid fa-comments"></i></div>
                         <h3 class="font-bold text-ifood-dark text-lg mb-3">Mentoria de carreira</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">É um espaço de conversa e orientação para apoiar quem está vivendo a parentalidade a refletir sobre carreira, prioridades e próximos passos profissionais, considerando as mudanças que esse novo momento de vida traz.</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Espaço de conversa e orientação para apoiar quem está vivendo a parentalidade a refletir sobre carreira e prioridades.</p>
                     </div>
-
-                    <!-- Consultoria Financeira -->
                     <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover-card flex flex-col items-center text-center">
-                        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner">
-                            <i class="fa-solid fa-piggy-bank"></i>
-                        </div>
+                        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner"><i class="fa-solid fa-piggy-bank"></i></div>
                         <h3 class="font-bold text-ifood-dark text-lg mb-3">Consultoria Financeira</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed mb-6">Um consultor financeiro pode ajudar a criar um plano personalizado para que você esteja preparado financeiramente para essa nova fase!</p>
-                        <a href="https://stay-technologies.typeform.com/to/lKiyRmyH" target="_blank" class="mt-auto text-ifood-red font-bold text-sm flex items-center gap-1 hover:underline">
-                            Clique aqui e agende a sua consultoria!
-                        </a>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">Ajuda a criar um plano personalizado para que você esteja preparado financeiramente para essa nova fase!</p>
+                        <a href="https://stay-technologies.typeform.com/to/lKiyRmyH" target="_blank" class="mt-auto text-ifood-red font-bold text-sm hover:underline">Agende sua consultoria!</a>
                     </div>
-
-                    <!-- Saúde Integral iDOC -->
                     <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover-card flex flex-col items-center text-center">
-                        <div class="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner">
-                            <i class="fa-solid fa-stethoscope"></i>
-                        </div>
+                        <div class="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner"><i class="fa-solid fa-stethoscope"></i></div>
                         <h3 class="font-bold text-ifood-dark text-lg mb-3">Saúde Integral iDOC</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Oferece apoio clínico e orientação em saúde para acompanhar cada fase da parentalidade com cuidado, prevenção e acolhimento.</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Apoio clínico e orientação em saúde para acompanhar cada fase da parentalidade com cuidado e acolhimento.</p>
                     </div>
-
-                    <!-- Isenção Coparticipação -->
                     <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover-card flex flex-col items-center text-center">
-                        <div class="w-20 h-20 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner">
-                            <i class="fa-solid fa-receipt"></i>
-                        </div>
+                        <div class="w-20 h-20 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-4xl mb-6 shadow-inner"><i class="fa-solid fa-receipt"></i></div>
                         <h3 class="font-bold text-ifood-dark text-lg mb-3">Isenção Coparticipação</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Isenção de coparticipação em consultas e exames para gestantes, do anúncio da gravidez até a data do parto, promovendo mais cuidado e acesso à saúde.</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Isenção de coparticipação em consultas e exames para gestantes, promovendo mais cuidado e acesso à saúde.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- MURAL -->
         <section id="mural" class="py-20 bg-white border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-between items-end mb-8">
@@ -557,7 +451,200 @@
         </section>
     </main>
 
-    <!-- VISÃO: ELEGIBILIDADE DE MIMOS (ROADMAP) -->
+    <!-- ========================================== -->
+    <!-- VISÃO: LIDERANÇA (ATUALIZADA)              -->
+    <!-- ========================================== -->
+    <main id="view-lideranca" class="flex-grow hidden-view bg-white">
+        
+        <!-- Hero Liderança -->
+        <section class="py-16 md:py-24 bg-gray-50 border-b border-gray-200">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <span class="bg-gray-200 text-gray-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 inline-block">Área Estratégica</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-6">Guia de Liderança <span class="text-ifood-red">iFamily</span></h1>
+                <div class="max-w-4xl mx-auto text-lg text-ifood-gray leading-relaxed space-y-4">
+                    <p>A jornada de parentalidade é um dos momentos mais importantes na vida de uma foodlover, e também pode ser um dos que mais exigem preparo da liderança.</p>
+                    <p>Mais do que boas intenções, esse momento pede clareza, consistência e responsabilidade na forma de conduzir conversas, decisões e expectativas.</p>
+                    <p>Por isso, o Programa iFamily foi estruturado para também apoiar a liderança ao longo de toda essa jornada: desde a gestação até o retorno ao trabalho, garantindo uma experiência respeitosa e alinhada com nosso jeito iFood de cuidar das pessoas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ações por Fase -->
+        <section class="py-16 max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-10 text-ifood-dark border-b pb-4">O papel do líder em cada tempo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm flex gap-6">
+                    <div class="text-ifood-red text-3xl font-black opacity-20">1</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-3">Acolher (1º e 2º Trimestre)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">O vínculo e a expectativa começam desde o projeto da gestação. Ao receber a notícia, celebre. Garanta que a pessoa conheça o programa iFamily e oriente-a a se inscrever. Seja flexível para a liberação em exames de pré-natal.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm flex gap-6">
+                    <div class="text-ifood-red text-3xl font-black opacity-20">2</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-3">Planejar (3º Trimestre)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Defina com clareza quem irá absorver os projetos. Reduza gradativamente viagens corporativas e demandas de alta pressão. Formalize o plano de saída junto ao Business Partner (BP) para evitar estresse nas semanas finais.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm flex gap-6">
+                    <div class="text-ifood-red text-3xl font-black opacity-20">3</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-3">Cuidar (Nascimento e Licença)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Envie uma mensagem de felicitações em nome do time. Após isso, respeite o distanciamento. Desconecte a pessoa das ferramentas. Não a acione para tirar dúvidas de trabalho em hipótese alguma.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm flex gap-6">
+                    <div class="text-ifood-red text-3xl font-black opacity-20">4</div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-3">Sustentar (Retorno ao Trabalho)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Faça um onboarding reverso. Agende um alinhamento na primeira semana, atualize sobre o que mudou. Entenda as novas restrições de horários e evite cobranças excessivas de metas no primeiro mês.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Como apoiamos -->
+            <div class="bg-ifood-dark text-white rounded-[2.5rem] p-10 md:p-16 mb-20 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-ifood-red rounded-full -mr-32 -mt-32 opacity-20"></div>
+                <div class="max-w-4xl relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">Como apoiamos a liderança</h2>
+                    <div class="space-y-8 text-lg text-gray-300 leading-relaxed">
+                        <p>Um dos principais diferenciais do programa é a <strong>mentoria de carreira ancorada na parentalidade</strong>. Isso significa apoiar decisões de carreira considerando o contexto real — garantindo que momentos de transição sejam conduzidos com segurança, clareza e continuidade de trajetória.</p>
+                        
+                        <div class="bg-white bg-opacity-5 p-8 rounded-3xl border border-white border-opacity-10">
+                            <h4 class="font-bold text-white mb-6 uppercase text-sm tracking-widest border-b border-white border-opacity-10 pb-4">Suporte prático para o dia a dia:</h4>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-ifood-red mt-1"></i> <span>Ajustes de ritmo e expectativas</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-ifood-red mt-1"></i> <span>Decisões sobre priorização e performance</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-ifood-red mt-1"></i> <span>Condução de conversas sensíveis</span></li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-ifood-red mt-1"></i> <span>Planejamento de transições e retorno</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <a href="https://calendar.app.google/nQz8nifEfuukLKcg6" target="_blank" class="bg-ifood-red text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-ifood-darkred transition shadow-lg inline-block">
+                            Agendar minha mentoria <i class="fa-solid fa-calendar-check ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impacto e Chamada Luto -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 bg-white border border-gray-100 p-10 rounded-3xl shadow-sm">
+                    <h2 class="text-2xl font-bold text-ifood-dark mb-6">O impacto na prática</h2>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-center gap-4"><div class="w-2 h-2 rounded-full bg-ifood-red"></div> <span>A foodlover tem mais clareza sobre trajetória e expectativas</span></li>
+                        <li class="flex items-center gap-4"><div class="w-2 h-2 rounded-full bg-ifood-red"></div> <span>Decisões são tomadas com mais equilíbrio e menos vieses</span></li>
+                        <li class="flex items-center gap-4"><div class="w-2 h-2 rounded-full bg-ifood-red"></div> <span>A comunicação se torna mais transparente e respeitosa</span></li>
+                        <li class="flex items-center gap-4"><div class="w-2 h-2 rounded-full bg-ifood-red"></div> <span>Processos acontecem com mais previsibilidade</span></li>
+                    </ul>
+                </div>
+                <!-- Banner Luto -->
+                <div class="bg-red-50 p-10 rounded-3xl flex flex-col justify-between border border-red-100">
+                    <div>
+                        <h3 class="font-bold text-xl text-ifood-dark mb-4">Situações de Luto</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">Cerca de 1 em cada 4 gestações termina em perda. Saiba como acolher com empatia e responsabilidade.</p>
+                    </div>
+                    <button onclick="switchView('luto')" class="text-ifood-red font-bold text-sm flex items-center gap-2 hover:underline">
+                        Guia de Acolhimento em Luto <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- VISÃO: LUTO GESTACIONAL (NOVA)             -->
+    <!-- ========================================== -->
+    <main id="view-luto" class="flex-grow hidden-view bg-white">
+        <section class="py-16 md:py-24 bg-red-50 border-b border-red-100">
+            <div class="max-w-4xl mx-auto px-4">
+                <button onclick="switchView('lideranca')" class="mb-8 flex items-center gap-2 text-ifood-red font-bold hover:underline">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar para Guia de Liderança
+                </button>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-6">Quando o Luto Entra pela <span class="text-ifood-red">Porta do Trabalho</span></h1>
+                <p class="text-xl text-ifood-gray leading-relaxed italic">
+                    Cerca de 1 em cada 4 gestações termina em perda (OMS). Esta não é uma crise rara; é um aspecto fundamental da experiência humana que exige preparação e profunda empatia da liderança.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-16 max-w-4xl mx-auto px-4 space-y-16">
+            <!-- O Luto que Ninguém Vê -->
+            <div class="bg-white border-l-4 border-ifood-red p-8 shadow-sm">
+                <h2 class="text-2xl font-bold mb-4">O Luto que Ninguém Vê</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Existe uma expectativa implícita de que a dor só é legítima quando há um bebê no colo. Mas a dor não funciona assim. O vínculo — e, portanto, a perda — começa no projeto, na expectativa, no corpo que já estava mudando. Reconhecer isso não é detalhe: é o primeiro gesto de cuidado.
+                </p>
+            </div>
+
+            <!-- Tipos de Perda -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <h4 class="font-bold mb-2">Aborto Espontâneo</h4>
+                    <p class="text-xs text-gray-600">Interrupção até 20-22 semanas. Impacto emocional profundo apesar da falta de reconhecimento social.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <h4 class="font-bold mb-2">Perda Gestacional Tardia</h4>
+                    <p class="text-xs text-gray-600">Após a 22ª semana. Mudanças físicas intensas e processos médicos/legais mais complexos.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <h4 class="font-bold mb-2">Óbito Neonatal</h4>
+                    <p class="text-xs text-gray-600">Morte após o nascimento. Luto extremo e a experiência do puerpério sem o bebê.</p>
+                </div>
+            </div>
+
+            <!-- Direitos -->
+            <div class="bg-blue-50 border border-blue-100 p-8 rounded-3xl">
+                <h3 class="font-bold text-blue-900 mb-6 flex items-center gap-2"><i class="fa-solid fa-gavel"></i> Direitos Básicos (Afastamento)</h3>
+                <ul class="space-y-4 text-blue-800">
+                    <li class="flex gap-4"><strong>Aborto Espontâneo:</strong> <span>20 dias de licença remunerada (Mãe e Parceiro/a).</span></li>
+                    <li class="flex gap-4"><strong>Perda Tardia ou Óbito:</strong> <span>120 dias de licença para a mãe; 60 dias para o parceiro/a.</span></li>
+                </ul>
+            </div>
+
+            <!-- Guia de Comportamento -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-white border border-green-100 rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-xl font-bold text-green-700 mb-6 flex items-center gap-2"><i class="fa-solid fa-circle-check"></i> O que AJUDA</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>"Sinto muito pela sua perda. Como podemos te apoiar?"</li>
+                        <li>"Imagino que seja difícil. Você não precisa passar por isso sozinha."</li>
+                        <li>Usar o nome do bebê, se a família assim desejar.</li>
+                        <li>Respeitar os silêncios e estar presente sem pressão.</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-red-100 rounded-3xl p-8 shadow-sm">
+                    <h3 class="text-xl font-bold text-ifood-red mb-6 flex items-center gap-2"><i class="fa-solid fa-circle-xmark"></i> O que NÃO ajuda</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>"Pelo menos foi no começo."</li>
+                        <li>"Logo você engravida de novo."</li>
+                        <li>"Deus sabe o que faz" ou "Seja forte."</li>
+                        <li>Evitar o assunto por medo ou comparar com outras histórias.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- O Luto no Corpo -->
+            <div class="bg-gray-900 text-white p-10 rounded-[2.5rem]">
+                <h3 class="text-2xl font-bold mb-6 text-ifood-pink">O Luto no Corpo e no Tempo (O Retorno)</h3>
+                <p class="text-gray-300 leading-relaxed mb-8">
+                    Mesmo após o retorno, o corpo e o cérebro continuam em adaptação. A interrupção abrupta do processo gestacional causa queda hormonal intensa, fadiga, insônia, hipersensibilidade emocional e dificuldade de memória/concentração.
+                </p>
+                <div class="bg-white bg-opacity-5 p-6 rounded-2xl border border-white border-opacity-10 mb-8">
+                    <h4 class="font-bold text-ifood-red mb-2 uppercase text-xs tracking-widest">Insight crucial para a Liderança</h4>
+                    <p class="text-sm">Queda de desempenho momentânea não é falta de compromisso. O líder deve criar um ambiente onde a pessoa não precise performar força enquanto sofre.</p>
+                </div>
+                <div class="bg-ifood-red p-6 rounded-2xl">
+                    <h4 class="font-bold text-white mb-2">Ação Imediata:</h4>
+                    <p class="text-sm">No momento da notícia, garanta o afastamento sem burocracia. Acione o <strong>Slack @Alli</strong> ou a <strong>Assistente Social via iDOC</strong> para garantir apoio especializado sem expor a colaboradora.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VISÃO: ELEGIBILIDADE DE MIMOS -->
     <main id="view-elegibilidade" class="flex-grow hidden-view bg-white">
         <section class="py-16 md:py-24 bg-gray-50 border-b px-4">
             <div class="max-w-5xl mx-auto">
@@ -565,7 +652,7 @@
                     <i class="fa-solid fa-arrow-left"></i> Voltar
                 </button>
                 <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-4">Trilha de Mimos <span class="text-ifood-red">iFamily</span></h1>
-                <p class="text-lg text-ifood-gray">Confira as tarefas necessárias para desbloquear seus kits.</p>
+                <p class="text-lg text-ifood-gray">Acompanhe as conquistas necessárias para receber cada kit do programa.</p>
             </div>
         </section>
         <section class="py-16 max-w-5xl mx-auto px-4">
@@ -579,16 +666,13 @@
                     <div class="md:w-3/4 bg-white border border-gray-200 rounded-3xl p-8 shadow-sm">
                         <ul class="space-y-3 text-gray-700">
                             <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Realizar o checkpoint de saúde da mãe</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Realizar o acolhimento social (em até 30 dias após inscrição)</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Preencher a isenção de coparticipação</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Agendar a primeira mentoria</li>
+                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Realizar o acolhimento social</li>
+                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Isenção de coparticipação</li>
+                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Agendar primeira mentoria</li>
                         </ul>
-                        <div class="mt-6 bg-ifood-pink bg-opacity-30 p-4 rounded-xl text-sm border-l-4 border-ifood-red font-medium">
-                            Em até 30 dias enviamos o kit mamãe após completar as etapas.
-                        </div>
+                        <div class="mt-6 bg-ifood-pink bg-opacity-30 p-4 rounded-xl text-sm border-l-4 border-ifood-red font-medium">Em até 30 dias após completar as etapas enviamos o kit mamãe.</div>
                     </div>
                 </div>
-
                 <!-- KIT BEBÊ -->
                 <div class="kit-step relative flex flex-col md:flex-row gap-8 pb-12">
                     <div class="md:w-1/4">
@@ -599,81 +683,21 @@
                         <ul class="space-y-3 text-gray-700">
                             <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Passar por uma sessão de mentoria</li>
                             <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Novo mapeamento de saúde da mãe</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Pais participar de ao menos uma roda de conversa</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Pais consumir o playbook para pais</li>
+                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Pais: participar de roda de conversa e ler playbook</li>
                         </ul>
-                        <div class="mt-6 bg-ifood-pink bg-opacity-30 p-4 rounded-xl text-sm border-l-4 border-ifood-red font-medium">
-                            Com isso, em até 30 dias enviamos o kit bebê.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- KIT NASCIMENTO -->
-                <div class="kit-step relative flex flex-col md:flex-row gap-8 pb-12">
-                    <div class="md:w-1/4">
-                        <div class="relative z-10 w-12 h-12 bg-ifood-red text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg ring-4 ring-red-100">3</div>
-                        <div class="mt-4"><span class="text-ifood-red font-bold uppercase text-xs tracking-widest">Tempo Cuidar</span><h3 class="text-2xl font-bold text-ifood-dark">Kit Nascimento</h3></div>
-                    </div>
-                    <div class="md:w-3/4 bg-white border border-gray-200 rounded-3xl p-8 shadow-sm">
-                        <ul class="space-y-3 text-gray-700">
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Incluir o bebê no portal e plano de saúde</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Solicitar a licença maternidade/paternidade</li>
-                            <li><i class="fa-regular fa-circle-check text-green-500 mr-2"></i> Preencher mapeamento de saúde do bebê</li>
-                        </ul>
-                        <div class="mt-6 bg-ifood-pink bg-opacity-30 p-4 rounded-xl text-sm border-l-4 border-ifood-red font-medium">
-                            O kit nascimento é enviado automaticamente após completar as etapas, e o reembolso deverá ser solicitado no portal de benefícios.
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- VISÃO: LIDERANÇA -->
-    <main id="view-lideranca" class="flex-grow hidden-view bg-white">
-        <section class="py-16 md:py-24 bg-gray-50 border-b px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-8">Guia de Liderança <span class="text-ifood-red">iFamily</span></h1>
-            <p class="text-lg text-ifood-gray max-w-4xl mx-auto leading-relaxed">A jornada de parentalidade exige preparo da liderança. O Programa iFamily apoia você com clareza e responsabilidade.</p>
-        </section>
-        <section class="py-16 max-w-5xl mx-auto px-4">
-            <div class="bg-white border rounded-3xl p-8 md:p-12 shadow-sm">
-                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-hand-holding-heart text-ifood-red"></i> Como apoiamos a liderança</h2>
-                <p class="text-lg text-gray-700 mb-8 leading-relaxed">Apoiamos decisões de carreira considerando o contexto real da parentalidade — garantindo que momentos de transição sejam conduzidos com segurança.</p>
-                <a href="https://calendar.app.google/nQz8nifEfuukLKcg6" target="_blank" class="inline-flex items-center gap-2 bg-ifood-red text-white font-bold py-4 px-8 rounded-2xl transition shadow-lg hover:-translate-y-1"><i class="fa-solid fa-calendar-check text-lg"></i> Agendar Mentoria</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- VISÃO: iFAMILY PARA PAIS -->
+    <!-- VISÃO: iFAMILY PARA PAIS / LICENÇAS (Mantidas) -->
     <main id="view-pais" class="flex-grow hidden-view bg-white">
         <section class="py-16 md:py-24 bg-ifood-pink bg-opacity-20 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <button onclick="switchView('voce')" class="mb-8 inline-flex items-center gap-2 text-ifood-red font-bold hover:underline"><i class="fa-solid fa-arrow-left"></i> Voltar</button>
                 <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-6">iFamily para <span class="text-ifood-red">Pais</span></h1>
-                <p class="text-xl font-medium text-ifood-dark italic mb-8">Uma conversa sobre presença, mudanças e o papel real da paternidade.</p>
                 <a href="https://calendar.app.google/Re5DJRHmycCtF5Kk9" target="_blank" class="bg-ifood-red text-white px-10 py-5 rounded-2xl font-bold text-xl inline-block transition hover:scale-105">Agendar meu lugar</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- VISÃO: LICENÇAS -->
-    <main id="view-licencas" class="flex-grow hidden-view bg-white">
-        <section class="py-16 md:py-24 bg-gray-50 border-b px-4 text-center">
-            <div class="max-w-5xl mx-auto">
-                <button onclick="switchView('voce')" class="mb-8 flex items-center gap-2 text-ifood-red font-bold hover:underline"><i class="fa-solid fa-arrow-left"></i> Voltar</button>
-                <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-4">Licenças <span class="text-ifood-red">iFamily</span></h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-sm text-left">
-                    <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-full">
-                        <h2 class="text-2xl font-bold mb-4">Licença Maternidade (180 dias)</h2>
-                        <p class="text-gray-600 mb-6">Duração garantida de 180 dias. Pode-se iniciar até 28 dias antes do parto.</p>
-                        <a href="https://beneflex.rh.digital/sign-in" target="_blank" class="text-ifood-red font-bold underline mt-auto">Acessar Beneflex</a>
-                    </div>
-                    <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-full">
-                        <h2 class="text-2xl font-bold mb-4">Licença Paternidade (60 dias)</h2>
-                        <p class="text-gray-600 mb-6">Duração de 60 dias totais. Pode ser usufruída de forma consecutiva ou fracionada.</p>
-                        <a href="https://beneflex.rh.digital/sign-in" target="_blank" class="text-ifood-red font-bold underline mt-auto">Acessar Beneflex</a>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -687,14 +711,14 @@
 
     <!-- MODAL MURAL -->
     <div id="mural-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl w-full max-w-md p-6 relative">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 relative shadow-2xl">
             <button onclick="document.getElementById('mural-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl"><i class="fa-solid fa-xmark"></i></button>
             <h3 class="text-xl font-bold mb-4">Compartilhar Foto</h3>
             <form id="form-mural" class="space-y-4">
                 <input type="text" id="mural-nome" placeholder="Nome do Bebê" required class="w-full px-3 py-2 border rounded-lg focus:outline-ifood-red">
                 <textarea id="mural-comentario" placeholder="Mensagem..." required class="w-full px-3 py-2 border rounded-lg focus:outline-ifood-red"></textarea>
                 <input type="file" id="mural-foto" accept="image/*" required class="w-full text-sm">
-                <button type="submit" class="w-full bg-ifood-red text-white font-bold py-3 rounded-xl mt-4 hover:bg-ifood-darkred transition">Publicar</button>
+                <button type="submit" class="w-full bg-ifood-red text-white font-bold py-3 rounded-xl mt-4 hover:bg-ifood-darkred transition shadow-lg">Publicar</button>
             </form>
         </div>
     </div>
@@ -707,7 +731,8 @@
                 'lideranca': document.getElementById('view-lideranca'),
                 'pais': document.getElementById('view-pais'),
                 'licencas': document.getElementById('view-licencas'),
-                'elegibilidade': document.getElementById('view-elegibilidade')
+                'elegibilidade': document.getElementById('view-elegibilidade'),
+                'luto': document.getElementById('view-luto')
             };
             const btns = {
                 'voce': document.getElementById('btn-voce'),
@@ -734,6 +759,7 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
+        // Intersection Observer para as "Bolinhas" da Timeline
         const sections = document.querySelectorAll('.jornada-section');
         const timelineItems = document.querySelectorAll('.timeline-item');
         const observer = new IntersectionObserver((entries) => {
