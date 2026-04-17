@@ -102,6 +102,46 @@
             margin-top: 2rem;
             margin-bottom: 2rem;
         }
+        
+        .licenca-section-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            height: 100%;
+        }
+        .badge-red {
+            background: #FEE2E2;
+            color: #B91C1C;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .highlight-box {
+            background: #FDF2F2;
+            border: 2px solid #FEE2E2;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .baby-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid #F3F4F6;
+            transition: all 0.3s ease;
+        }
+        .baby-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1); }
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #EA1D2C;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="font-sans text-ifood-dark bg-ifood-bg min-h-screen flex flex-col text-left">
@@ -124,7 +164,7 @@
                     <a href="#servicos" onclick="if(currentView !== 'voce') switchView('voce')" class="text-ifood-gray hover:text-ifood-red transition">Serviços</a>
                     <a href="#" onclick="switchView('elegibilidade'); return false;" class="text-ifood-gray hover:text-ifood-red transition">Mimos</a>
                     <a href="#" onclick="switchView('licencas'); return false;" class="text-ifood-gray hover:text-ifood-red transition">Licenças</a>
-                    <a href="#mural" onclick="if(currentView !== 'voce') switchView('voce')" class="text-ifood-gray hover:text-ifood-red transition">Mural iFamily</a>
+                    <a href="#" onclick="switchView('mural'); return false;" class="text-ifood-gray hover:text-ifood-red transition">Mural iFamily</a>
                 </nav>
 
                 <div class="hidden lg:flex items-center space-x-4">
@@ -132,7 +172,7 @@
                         <button id="btn-tab-voce" onclick="switchView('voce')" class="px-4 py-1.5 rounded-full bg-white shadow-sm text-ifood-red transition-all">Para Você</button>
                         <button id="btn-tab-lideranca" onclick="switchView('lideranca')" class="px-4 py-1.5 rounded-full text-gray-500 hover:text-gray-700 transition-all">Para Liderança</button>
                     </div>
-                    <a href="https://forms.gle/your-link" target="_blank" class="bg-ifood-red text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-ifood-darkred transition flex items-center gap-2 shadow-sm">
+                    <a href="https://forms.gle/fYG7qiLddoQPW6Y97" target="_blank" class="bg-ifood-red text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-ifood-darkred transition flex items-center gap-2 shadow-sm">
                         Inscreva-se <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
                 </div>
@@ -148,6 +188,7 @@
                 <button onclick="switchView('voce'); toggleMobileMenu()" class="text-left p-3 hover:bg-ifood-pink rounded-lg">Página Inicial</button>
                 <button onclick="switchView('licencas'); toggleMobileMenu()" class="text-left p-3 hover:bg-ifood-pink rounded-lg">Licenças</button>
                 <button onclick="switchView('elegibilidade'); toggleMobileMenu()" class="text-left p-3 hover:bg-ifood-pink rounded-lg">Mimos e Elegibilidade</button>
+                <button onclick="switchView('mural'); toggleMobileMenu()" class="text-left p-3 hover:bg-ifood-pink rounded-lg">Mural iFamily</button>
                 <hr>
                 <button onclick="switchView('lideranca'); toggleMobileMenu()" class="text-left p-3 hover:bg-ifood-pink rounded-lg text-ifood-red font-bold">Guia da Liderança</button>
             </div>
@@ -224,7 +265,7 @@
             </div>
         </section>
 
-        <!-- Fases Detalhadas (Conforme Imagens ccad86 a ccb093) -->
+        <!-- Fases Detalhadas -->
         <div class="bg-ifood-bg py-12 space-y-16">
             
             <!-- Fase 1: Acolher -->
@@ -277,7 +318,7 @@
                         <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm text-center">
                             <i class="fa-solid fa-hashtag text-purple-500 mb-3 text-xl"></i>
                             <h5 class="text-xs mb-4">Mapeamento de Saúde</h5>
-                            <a href="#" class="btn-action !text-[10px] !mt-2">Chamar iDOC</a>
+                            <a href="https://ifood-global.enterprise.slack.com/archives/C04HB3HQCLE" target="_blank" class="btn-action !text-[10px] !mt-2">Chamar iDOC</a>
                         </div>
                         <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm text-center">
                             <i class="fa-solid fa-file-invoice-dollar text-blue-500 mb-3 text-xl"></i>
@@ -345,18 +386,18 @@
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-bold">
                         <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm text-center">
                             <i class="fa-solid fa-file-medical text-blue-500 mb-3 text-xl"></i>
-                            <h5 class="text-xs mb-2">Atualizar mapeamento de saúde</h5>
-                            <a href="https://liviapaula-ux.github.io/checkpointsaude2/" target="_blank" class="text-ifood-red text-[10px] hover:underline">Acessar</a>
+                            <h5 class="text-xs mb-4">Atualizar mapeamento de saúde</h5>
+                            <a href="https://liviapaula-ux.github.io/checkpointsaude2/" target="_blank" class="btn-action !text-[10px] !mt-2">Acessar</a>
                         </div>
                         <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm text-center">
                             <i class="fa-solid fa-chalkboard-user text-green-500 mb-3 text-xl"></i>
-                            <h5 class="text-xs mb-2">Mentorias preparatórias (Licença)</h5>
-                            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0e6ckMQwe1-LEPr0k-OV-p__2tJVmuHZyh0bGsn81pj2hCKrhfgMlsNp62jL93gFLDbVNqEkH3" target="_blank" class="text-ifood-red text-[10px] hover:underline">Agendar</a>
+                            <h5 class="text-xs mb-4">Mentorias preparatórias (Licença)</h5>
+                            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0e6ckMQwe1-LEPr0k-OV-p__2tJVmuHZyh0bGsn81pj2hCKrhfgMlsNp62jL93gFLDbVNqEkH3" target="_blank" class="btn-action !text-[10px] !mt-2">Agendar</a>
                         </div>
                         <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm text-center">
                             <i class="fa-solid fa-users text-purple-500 mb-3 text-xl"></i>
-                            <h5 class="text-xs mb-2">Rodas de conversa (Pais)</h5>
-                            <a href="https://calendar.app.google/XowqmpYpPUwSN7jb9" target="_blank" class="text-ifood-red text-[10px] hover:underline">Agendar</a>
+                            <h5 class="text-xs mb-4">Rodas de conversa (Pais)</h5>
+                            <a href="https://calendar.app.google/XowqmpYpPUwSN7jb9" target="_blank" class="btn-action !text-[10px] !mt-2">Agendar</a>
                         </div>
                     </div>
                 </div>
@@ -411,7 +452,7 @@
                             <i class="fa-solid fa-id-card text-blue-500 mb-3 text-xl"></i>
                             <h5 class="text-xs mb-1">Adicionar bebê ao plano</h5>
                             <p class="text-[9px] text-gray-400 mb-3">Faça a inclusão via portal Beneflex.</p>
-                            <a href="#" class="btn-action !py-1.5 !text-[10px]">Acessar Beneflex</a>
+                            <a href="https://beneflex.rh.digital/loading" target="_blank" class="btn-action !py-1.5 !text-[10px]">Acessar Beneflex</a>
                         </div>
                         <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm">
                             <i class="fa-solid fa-file-signature text-purple-500 mb-3 text-xl"></i>
@@ -508,18 +549,19 @@
                         <a href="https://stay-technologies.typeform.com/to/lKiyRmyH" target="_blank" class="btn-action">Agendar Consultoria</a>
                     </div>
 
-                    <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full md:col-span-2">
+                    <!-- Quadros de Saúde e Isenção lado a lado -->
+                    <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full">
                         <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-stethoscope"></i></div>
                         <h3 class="font-bold text-ifood-dark text-xl mb-4">Saúde Integral (iDoc)</h3>
                         <p class="text-sm text-gray-600 mb-6 font-medium">O iDoc cuida dos FoodLovers e dependentes de forma integrada e gratuita. Atendimento virtual ou presencial em Osasco.</p>
                         <div class="flex flex-wrap gap-4">
-                            <a href="https://slack.com" target="_blank" class="btn-action !mt-0 !w-auto px-6">#idoc no Slack</a>
+                            <a href="https://ifood-global.enterprise.slack.com/archives/C04HB3HQCLE" target="_blank" class="btn-action !mt-0 !w-auto px-6">#idoc no Slack</a>
                             <a href="https://ifood.amplimed.com.br" target="_blank" class="btn-action !mt-0 !w-auto px-6">Acessar Amplimed</a>
                         </div>
                         <p class="mt-4 text-xs text-gray-400 italic">(41) 3093-8600</p>
                     </div>
 
-                    <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full md:col-span-2">
+                    <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full">
                         <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-receipt"></i></div>
                         <h3 class="font-bold text-ifood-dark text-xl mb-4">Isenção Coparticipação</h3>
                         <p class="text-sm text-gray-600 mb-8 font-medium">Isenção para gestantes até o parto e para crianças até dois anos.</p>
@@ -530,7 +572,7 @@
         </section>
     </main>
 
-    <!-- VISÃO: LIDERANÇA (RESTAURADA CONFORME IMG 1) -->
+    <!-- VISÃO: LIDERANÇA -->
     <main id="view-lideranca" class="flex-grow hidden-view bg-white">
         <section class="py-16 md:py-20 bg-white">
             <div class="max-w-6xl mx-auto px-4 text-center">
@@ -546,7 +588,6 @@
         <section class="pb-16 max-w-6xl mx-auto px-4">
             <h2 class="text-2xl font-bold text-ifood-dark mb-10 border-b pb-4">Ações da Liderança por Fase</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                <!-- Ações conforme imagem cbcb91.png -->
                 <div class="bg-white border border-gray-100 p-8 rounded-[1.5rem] shadow-sm font-bold">
                     <h3 class="font-bold text-ifood-dark text-lg mb-4 flex items-center gap-3">
                         <span class="w-10 h-10 rounded-full bg-red-50 text-ifood-red flex items-center justify-center border border-red-200"><i class="fa-solid fa-bullseye text-sm"></i></span>
@@ -624,7 +665,7 @@
         </section>
     </main>
 
-    <!-- VISÃO: GUIA DE LUTO (RESTAURADA CONFORME IMG 2) -->
+    <!-- VISÃO: GUIA DE LUTO -->
     <main id="view-luto" class="flex-grow hidden-view bg-white">
         <section class="py-12 bg-gray-50 px-4 border-b border-gray-200">
             <div class="max-w-5xl mx-auto">
@@ -640,7 +681,6 @@
 
         <section class="py-16 px-4 bg-ifood-bg font-bold text-left">
             <div class="max-w-5xl mx-auto space-y-10">
-                <!-- Cards de categorias de luto conforme imagem -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white border p-8 rounded-2xl shadow-sm">
                         <h4 class="font-bold mb-4 text-ifood-dark border-b pb-2">Aborto Espontâneo</h4>
@@ -664,7 +704,6 @@
                     </ul>
                 </div>
 
-                <!-- O que Ajuda / O que não ajuda -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-[#F0FDF4] border border-[#DCFCE7] p-8 rounded-2xl shadow-sm">
                         <h3 class="text-[#15803D] font-extrabold uppercase tracking-widest text-sm mb-6 flex items-center gap-2"><i class="fa-solid fa-circle-check"></i> O que AJUDA</h3>
@@ -688,7 +727,6 @@
                     </div>
                 </div>
 
-                <!-- Bloco escuro de retorno -->
                 <div class="bg-ifood-dark text-white p-10 md:p-14 rounded-[2.5rem] shadow-2xl">
                     <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-hourglass-half text-ifood-red"></i> O Luto no Corpo e no Tempo (O Retorno)</h3>
                     <p class="text-gray-300 leading-relaxed mb-8 font-medium">Mesmo após o retorno, o corpo e o cérebro continuam em adaptação. A interrupção abrupta do processo gestacional causa <strong>queda hormonal intensa</strong>, fadiga e hipersensibilidade.</p>
@@ -697,7 +735,7 @@
                         <div class="w-12 h-12 bg-yellow-400 text-ifood-dark rounded-full flex items-center justify-center shrink-0 shadow-lg font-black text-2xl"><i class="fa-solid fa-lightbulb"></i></div>
                         <div>
                             <h4 class="font-bold text-yellow-400 mb-2">Insight crucial para a Liderança</h4>
-                            <p class="text-sm text-gray-300 leading-relaxed font-medium">Queda de desempenho momentânea <strong>não é falta de compromisso</strong>. O tempo de recuperação não é linear. O líder deve criar um ambiente seguro.</p>
+                            <p class="text-sm text-gray-300 leading-relaxed font-medium">Queda de desempenho momentânea <strong>não é falta de compromisso</strong>. O tempo de recuperação não é linear. O tempo de recuperação não é linear. O líder deve criar um ambiente seguro.</p>
                         </div>
                     </div>
 
@@ -709,39 +747,233 @@
         </section>
     </main>
 
-    <!-- VISÃO: LICENÇAS (TOTALMENTE DETALHADA) -->
+    <!-- VISÃO: LICENÇAS -->
     <main id="view-licencas" class="flex-grow hidden-view bg-white">
-        <!-- Mantido conforme solicitação anterior para não remover nada -->
-        <section class="py-12 md:py-20 bg-gray-50 border-b border-gray-200 px-4">
-            <div class="max-w-5xl mx-auto">
+        <!-- Banner Superior -->
+        <section class="py-12 md:py-16 bg-gray-50 border-b border-gray-200 px-4">
+            <div class="max-w-6xl mx-auto">
                 <button onclick="switchView('voce')" class="mb-8 text-ifood-red font-bold flex items-center gap-2 hover:underline"><i class="fa-solid fa-arrow-left text-sm"></i> Voltar</button>
-                <h1 class="text-4xl font-extrabold text-ifood-dark mb-4">Guia de Licenças <span class="text-ifood-red">iFamily</span></h1>
-                <p class="text-ifood-gray text-lg font-medium">Entenda todos os seus direitos e prazos no iFood.</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-4">Guia de Licenças <span class="text-ifood-red">iFamily</span></h1>
+                <p class="text-ifood-gray text-lg font-medium max-w-2xl">Aqui você encontra o detalhamento completo de todos os seus direitos, prazos e regras para cada modalidade de licença no iFood.</p>
             </div>
         </section>
-        <section class="py-16 max-w-6xl mx-auto px-4 space-y-12 font-bold">
-            <div class="licenca-card">
-                <h2 class="text-2xl font-extrabold mb-6 text-ifood-dark border-b-2 border-ifood-red pb-2">Licença Maternidade</h2>
-                <div class="space-y-4 text-sm text-gray-700">
-                    <p><strong>Quem tem direito:</strong> Foodlovers CLT. (Estagiárias não elegíveis).</p>
-                    <p><strong>Duração:</strong> 180 dias (120 médicos + 60 Empresa Cidadã).</p>
-                    <p><strong>Remuneração:</strong> Salário normal + média da RV dos últimos 6 meses.</p>
-                    <p><strong>Início:</strong> Até 28 dias antes do parto ou após o nascimento.</p>
+
+        <section class="py-12 max-w-6xl mx-auto px-4 space-y-16">
+            
+            <!-- LICENÇA MATERNIDADE -->
+            <div id="maternidade-detalhe">
+                <div class="flex items-center gap-3 mb-8 border-b-4 border-ifood-red pb-4">
+                    <div class="w-12 h-12 bg-ifood-red text-white rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-person-pregnant"></i></div>
+                    <h2 class="text-3xl font-black text-ifood-dark uppercase">Licença Maternidade</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                    <div class="licenca-section-card">
+                        <h3 class="text-xl font-bold mb-6 text-ifood-red flex items-center gap-2"><i class="fa-solid fa-circle-info"></i> Informações Básicas</h3>
+                        <ul class="space-y-4 text-sm font-medium text-gray-700">
+                            <li><span class="text-gray-400 block text-xs uppercase">Quem tem direito</span> Foodlovers CLT. <span class="text-ifood-red text-[10px] block mt-1">(Estagiárias não elegíveis conforme Lei 11.788/2008)</span></li>
+                            <li><span class="text-gray-400 block text-xs uppercase">Duração Total</span> <strong>180 dias</strong> <span class="badge-red ml-2">120 (médicos) + 60 (Empresa Cidadã)</span></li>
+                            <li><span class="text-gray-400 block text-xs uppercase">Início da Licença</span> Pode começar até <strong>28 dias antes</strong> do parto ou logo após o nascimento.</li>
+                        </ul>
+                    </div>
+
+                    <div class="licenca-section-card">
+                        <h3 class="text-xl font-bold mb-6 text-blue-600 flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i> Como Solicitar</h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                                <p class="text-xs font-bold text-blue-800 mb-2">Fluxo via Slack @Alli:</p>
+                                <ol class="text-xs space-y-2 text-blue-700">
+                                    <li class="flex gap-2"><span>1.</span> Digite a frase: <strong>"Enviar Licença"</strong></li>
+                                    <li class="flex gap-2"><span>2.</span> Anexe o <strong>Atestado de Licença Maternidade</strong></li>
+                                    <li class="flex gap-2"><span>3.</span> Anexe a <strong>Certidão de Nascimento</strong> (se já nasceu)</li>
+                                    <li class="flex gap-2"><span>4.</span> Envie a <strong>Carta de extensão</strong> (em até 30 dias após nascimento)</li>
+                                </ol>
+                            </div>
+                            <p class="text-[10px] text-gray-500 italic">* A carta de extensão deve ser escrita à mão.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESTAQUE IMPORTANTE: BENEFÍCIOS -->
+                <div class="highlight-box mb-12">
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="shrink-0">
+                            <div class="bg-ifood-red text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg animate-pulse"><i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <div class="font-bold">
+                            <h3 class="text-xl text-ifood-dark mb-4 uppercase">Inclusão do bebê em benefícios <span class="text-ifood-red">(MUITO IMPORTANTE)</span></h3>
+                            <p class="text-sm text-gray-700 mb-6 font-medium leading-relaxed">Não esqueça de acessar o <strong>Portal de Benefícios</strong> para cadastrar seu bebê e garantir a assistência médica sem carência.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white p-5 rounded-2xl shadow-sm border border-red-100">
+                                    <h4 class="text-xs text-ifood-red mb-2 uppercase">Passo a Passo</h4>
+                                    <ul class="text-[11px] text-gray-600 space-y-2">
+                                        <li>• Cadastrar novo dependente e aguardar aprovação</li>
+                                        <li>• Incluir na assistência médica via eleição familiar</li>
+                                        <li>• <strong>Prazo:</strong> Até 30 dias da data de nascimento</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white p-5 rounded-2xl shadow-sm border border-red-100">
+                                    <h4 class="text-xs text-ifood-red mb-2 uppercase">Regras de Uso</h4>
+                                    <ul class="text-[11px] text-gray-600 space-y-2">
+                                        <li>• Nos primeiros 30 dias, use a <strong>sua carteirinha</strong> para o bebê</li>
+                                        <li>• Inclusão em 30 dias garante <strong>isenção de carência</strong></li>
+                                        <li>• Auxílio-creche disponível após o cadastro</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="https://beneflex.rh.digital/loading" target="_blank" class="btn-action !w-auto px-8 !mt-6">Acessar Portal Beneflex</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalhes Financeiros e CLT -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-bold">
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="text-sm text-ifood-dark mb-4 border-b pb-2">Salário e RVV</h4>
+                        <ul class="text-xs space-y-3 text-gray-600 font-medium">
+                            <li>• Salário normal durante todo o período.</li>
+                            <li>• <strong>Média RVV:</strong> Recebe média dos últimos 6 meses.</li>
+                            <li>• <strong>Garantia de Gatilho:</strong> 80% no mês de início e retorno (proporcional).</li>
+                            <li>• Retorno após dia 20: Garantia estende ao mês seguinte.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="text-sm text-ifood-dark mb-4 border-b pb-2">13º e PLR</h4>
+                        <ul class="text-xs space-y-3 text-gray-600 font-medium">
+                            <li>• <strong>13º Integral:</strong> Pago normalmente pela empresa.</li>
+                            <li>• <strong>PLR Integral:</strong> Elegível ao pagamento total (proporcional apenas em licenças não remuneradas).</li>
+                            <li>• Variáveis pagas na 2ª parcela do 13º.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="text-sm text-ifood-dark mb-4 border-b pb-2">Retorno e Amamentação</h4>
+                        <ul class="text-xs space-y-3 text-gray-600 font-medium">
+                            <li>• Como a licença já é de 180 dias (6 meses):</li>
+                            <li>• <strong>Não há</strong> intervalos de amamentação após retorno.</li>
+                            <li>• <strong>Não há</strong> licença-amamentação extra de 15 dias.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="licenca-card">
-                <h2 class="text-2xl font-extrabold mb-6 text-ifood-dark border-b-2 border-blue-600 pb-2">Licença Paternidade</h2>
-                <div class="space-y-4 text-sm text-gray-700">
-                    <p><strong>Duração:</strong> 60 dias totais após o nascimento.</p>
-                    <p><strong>Uso:</strong> 60 dias diretos ou 20 dias + 40 dias fracionados (até o bebê fazer 1 ano).</p>
-                    <p><strong>Importante:</strong> Solicitar via Slack @Alli em até 5 dias do nascimento.</p>
+
+            <!-- LICENÇA PATERNIDADE / PARENTAL -->
+            <div id="paternidade-detalhe">
+                <div class="flex items-center gap-3 mb-8 border-b-4 border-blue-600 pb-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-person-circle-check"></i></div>
+                    <h2 class="text-3xl font-black text-ifood-dark uppercase">Licença Paternidade / Parental</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="licenca-section-card border-blue-100">
+                        <h3 class="text-xl font-bold mb-6 text-blue-700 flex items-center gap-2"><i class="fa-solid fa-clock"></i> Duração e Elegibilidade</h3>
+                        <ul class="space-y-4 text-sm font-medium text-gray-700">
+                            <li><span class="text-gray-400 block text-xs uppercase">Quem tem direito</span> Todos os foodlovers CLT. <span class="text-ifood-red text-[10px] block mt-1">(Estagiários não elegíveis)</span></li>
+                            <li><span class="text-gray-400 block text-xs uppercase">Duração Total</span> <strong>60 dias</strong> (por liberalidade do iFood)</li>
+                            <li class="bg-blue-50 p-4 rounded-xl">
+                                <span class="text-blue-800 block text-xs uppercase mb-2">Formas de Usar</span>
+                                <div class="space-y-2 text-xs">
+                                    <p><strong>1. Consecutivo:</strong> 60 dias diretos do nascimento.</p>
+                                    <p><strong>2. Fracionado:</strong> 20 dias iniciais + 40 dias fracionados (em até 3 períodos de min. 5 dias cada, até o bebê fazer 1 ano).</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="licenca-section-card border-blue-100">
+                        <h3 class="text-xl font-bold mb-6 text-blue-700 flex items-center gap-2"><i class="fa-solid fa-calendar-check"></i> Prazos e Solicitação</h3>
+                        <div class="space-y-6">
+                            <div class="bg-white p-4 rounded-xl border border-blue-200">
+                                <p class="text-xs font-bold text-gray-700 mb-2 italic text-ifood-red">Prazo de Envio:</p>
+                                <p class="text-[11px] leading-relaxed text-gray-600">Apresentar certidão de nascimento em <strong>até 5 dias</strong> do primeiro mês do parto via Slack @Alli: <strong>"Enviar licença paternidade"</strong>.</p>
+                            </div>
+                            <div class="space-y-3 font-bold">
+                                <h4 class="text-xs uppercase text-gray-400">O que enviar:</h4>
+                                <ul class="text-xs space-y-2 text-gray-600">
+                                    <li class="flex gap-2"><i class="fa-solid fa-check text-green-500"></i> Certidão de Nascimento</li>
+                                    <li class="flex gap-2"><i class="fa-solid fa-check text-green-500"></i> Carta de extensão (escrita à mão)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REPETIÇÃO DO DESTAQUE DE BENEFÍCIOS PARA PAIS -->
+                <div class="highlight-box bg-blue-50 border-blue-200 mb-12">
+                    <h3 class="text-xl font-bold text-blue-900 mb-4 uppercase">Inclusão do bebê em benefícios <span class="text-ifood-red">(IMPORTANTE)</span></h3>
+                    <p class="text-sm font-medium text-blue-800 mb-4">Assim como na licença maternidade, os pais devem realizar a inclusão em até 30 dias no Portal Beneflex para garantir isenção de carência.</p>
+                    <a href="https://beneflex.rh.digital/loading" target="_blank" class="text-xs text-ifood-red hover:underline font-black">ACESSAR PORTAL BENEFLEX <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-bold">
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="text-sm text-ifood-dark mb-4 border-b pb-2">RVV Especial Paternidade</h4>
+                        <div class="space-y-4 text-xs font-medium text-gray-600">
+                            <p><strong>Durante a licença:</strong> Média da RV dos últimos 6 meses.</p>
+                            <p><strong>Mês de Retorno:</strong> Trigger reduzido para <strong>50%</strong> (para quem opta por até 60 dias).</p>
+                            <p><strong>Garantia Mínima:</strong> Se retorno após o dia 20, garantia de 80% estende ao mês seguinte.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="text-sm text-ifood-dark mb-4 border-b pb-2">Benefícios e PLR</h4>
+                        <ul class="text-xs space-y-3 text-gray-600 font-medium">
+                            <li>• Salário e PLR integrais.</li>
+                            <li>• Transporte/Combustível bloqueados na licença.</li>
+                            <li>• Auxílio-creche após cadastro no portal.</li>
+                            <li>• Inclusão no plano de saúde em até 30 dias.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <button onclick="switchView('voce')" class="mt-16 text-ifood-red font-bold flex items-center gap-2 mx-auto hover:underline">Voltar ao Início</button>
+
+            <!-- LICENÇAS EM CASO DE ADOÇÃO -->
+            <div id="adocao-detalhe">
+                <div class="flex items-center gap-3 mb-8 border-b-4 border-purple-600 pb-4">
+                    <div class="w-12 h-12 bg-purple-600 text-white rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-house-chimney-heart"></i></div>
+                    <h2 class="text-3xl font-black text-ifood-dark uppercase">Licenças para Adoção</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-bold">
+                    <div class="licenca-section-card border-purple-100">
+                        <h3 class="text-lg font-bold mb-6 text-purple-700 uppercase">Maternidade / Adoção <span class="text-[10px] block text-gray-400">(Adotante/Guardiã)</span></h3>
+                        <p class="text-xs text-gray-500 mb-6 font-medium">Duração baseada na idade da criança (mediante termo de guarda):</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center bg-purple-50 p-3 rounded-lg border border-purple-100">
+                                <span class="text-xs text-purple-900">Até 1 ano</span>
+                                <span class="badge-red !bg-purple-200 !text-purple-800">180 dias</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-purple-50 p-3 rounded-lg border border-purple-100">
+                                <span class="text-xs text-purple-900">1 a 4 anos</span>
+                                <span class="badge-red !bg-purple-200 !text-purple-800">60 + 30 dias</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-purple-50 p-3 rounded-lg border border-purple-100">
+                                <span class="text-xs text-purple-900">4 a 8 anos</span>
+                                <span class="badge-red !bg-purple-200 !text-purple-800">30 + 15 dias</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="licenca-section-card border-purple-100">
+                        <h3 class="text-lg font-bold mb-6 text-purple-700 uppercase">Parceiro(a) / Pai Adotante</h3>
+                        <div class="space-y-4 text-xs font-medium text-gray-700">
+                            <p class="text-xl font-black text-ifood-dark">60 DIAS TOTAIS</p>
+                            <ul class="space-y-3">
+                                <li>• <strong>20 dias</strong> iniciais consecutivos da adoção.</li>
+                                <li>• <strong>40 dias</strong> de extensão (podem ser fracionados em 3 períodos em até 1 ano).</li>
+                                <li class="text-ifood-red italic border-t pt-3">• Apresentar documento de adoção em até 5 dias via @alli no Slack.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="switchView('voce')" class="mt-16 text-ifood-red font-bold flex items-center gap-2 mx-auto hover:underline shadow-sm bg-white px-8 py-3 rounded-full border border-gray-200 transition-all hover:-translate-y-1">
+                <i class="fa-solid fa-house"></i> Voltar ao Início do Programa
+            </button>
         </section>
     </main>
 
-    <!-- VISÃO: MIMOS (RESTAURADA INTEGRAL) -->
+    <!-- VISÃO: MIMOS -->
     <main id="view-elegibilidade" class="flex-grow hidden-view bg-white py-16 px-4">
         <div class="max-w-7xl mx-auto text-center font-bold">
             <h1 class="text-4xl font-extrabold text-ifood-dark mb-4">Mimos do Programa</h1>
@@ -776,6 +1008,69 @@
             </div>
             <button onclick="switchView('voce')" class="mt-16 text-ifood-red font-bold flex items-center gap-2 mx-auto hover:underline"><i class="fa-solid fa-arrow-left"></i> Voltar ao Início</button>
         </div>
+    </main>
+
+    <!-- VISÃO: MURAL IFAMILY -->
+    <main id="view-mural" class="flex-grow hidden-view bg-white">
+        <section class="py-12 md:py-16 bg-ifood-pink bg-opacity-30 border-b border-gray-100 px-4">
+            <div class="max-w-6xl mx-auto text-center">
+                <span class="bg-white text-ifood-red px-4 py-1 rounded-full text-xs font-bold shadow-sm mb-4 inline-block">COMUNIDADE</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-ifood-dark mb-4">Mural <span class="text-ifood-red">iFamily</span></h1>
+                <p class="text-ifood-gray text-lg font-medium max-w-2xl mx-auto">Um espaço para celebrarmos juntos a chegada dos novos FoodLovers. Compartilhe esse momento com o time!</p>
+            </div>
+        </section>
+
+        <section class="py-12 max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Formulário de Cadastro -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm sticky top-32">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-ifood-dark">
+                            <i class="fa-solid fa-camera text-ifood-red"></i> Postar Foto
+                        </h3>
+                        <form id="form-mural" onsubmit="handleMuralSubmit(event)" class="space-y-4 font-bold">
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1 uppercase tracking-wider">Nome do Bebê</label>
+                                <input type="text" id="mural-bebe" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ifood-red outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1 uppercase tracking-wider">Data de Nascimento</label>
+                                <input type="date" id="mural-nascimento" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ifood-red outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1 uppercase tracking-wider">Nome da Mãe</label>
+                                <input type="text" id="mural-mae" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ifood-red outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1 uppercase tracking-wider">Foto do Bebê</label>
+                                <div class="relative group">
+                                    <input type="file" id="mural-foto" accept="image/*" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                    <div class="bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl py-8 text-center group-hover:border-ifood-red transition-colors">
+                                        <i class="fa-solid fa-cloud-arrow-up text-gray-300 text-3xl mb-2 group-hover:text-ifood-red"></i>
+                                        <p class="text-xs text-gray-400" id="file-label">Selecionar arquivo</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" id="btn-submit-mural" class="btn-action !mt-6 shadow-md">
+                                <span id="btn-text">Publicar no Mural</span>
+                                <div id="btn-loading" class="hidden"><div class="loading-spinner !border-white !w-4 !h-4"></div></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Grid de Fotos -->
+                <div class="lg:col-span-2">
+                    <div id="mural-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Postagens aparecerão aqui -->
+                        <div class="col-span-full py-20 text-center text-gray-400">
+                            <i class="fa-solid fa-images text-5xl mb-4 block opacity-20"></i>
+                            <p class="font-medium">Carregando momentos fofos...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- MODAL DETALHES MENTORIA HOME -->
@@ -825,17 +1120,191 @@
         </div>
     </div>
 
+    <!-- SERVIÇOS DO PROGRAMA (QUADROS LADO A LADO) -->
+    <section id="servicos" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-ifood-dark">Serviços do Programa</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-bold">
+                <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full">
+                    <div class="w-16 h-16 bg-red-50 text-ifood-red rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-comments"></i></div>
+                    <h3 class="font-bold text-ifood-dark text-xl mb-4">Mentoria de carreira</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-8 flex-grow font-medium">Espaço de reflexão sobre carreira e parentalidade. Apoio estruturado para o desenvolvimento profissional.</p>
+                    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0e6ckMQwe1-LEPr0k-OV-p__2tJVmuHZyh0bGsn81pj2hCKrhfgMlsNp62jL93gFLDbVNqEkH3" target="_blank" class="btn-action">Agendar Mentoria</a>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h3 class="font-bold text-ifood-dark text-xl mb-4">Consultoria Financeira</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-8 flex-grow font-medium">A Stay oferece consultoria financeira personalizada via videochamada, diagnóstico completo da sua vida financeira e conteúdo educativo direto no WhatsApp.</p>
+                    <a href="https://stay-technologies.typeform.com/to/lKiyRmyH" target="_blank" class="btn-action">Agendar Consultoria</a>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full">
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-stethoscope"></i></div>
+                    <h3 class="font-bold text-ifood-dark text-xl mb-4">Saúde Integral (iDoc)</h3>
+                    <p class="text-sm text-gray-600 mb-6 font-medium">O iDoc cuida dos FoodLovers e dependentes de forma integrada e gratuita. Atendimento virtual ou presencial em Osasco.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://ifood-global.enterprise.slack.com/archives/C04HB3HQCLE" target="_blank" class="btn-action !mt-0 !w-auto px-6">#idoc no Slack</a>
+                        <a href="https://ifood.amplimed.com.br" target="_blank" class="btn-action !mt-0 !w-auto px-6">Acessar Amplimed</a>
+                    </div>
+                    <p class="mt-4 text-xs text-gray-400 italic">(41) 3093-8600</p>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-sm flex flex-col hover-card h-full">
+                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner"><i class="fa-solid fa-receipt"></i></div>
+                    <h3 class="font-bold text-ifood-dark text-xl mb-4">Isenção Coparticipação</h3>
+                    <p class="text-sm text-gray-600 mb-8 font-medium">Isenção para gestantes até o parto e para crianças até dois anos.</p>
+                    <a href="https://survey.lockton.com.br/surveyanswer/4SFXFtjvLSXLDjffbOtKB3uMkhw8e4I9?culture=pt-BR" target="_blank" class="btn-action">Como Solicitar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-ifood-dark text-white py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center font-bold">
-            <p class="text-gray-400 text-sm">© 2024 iFamily - Programa de Parentalidade iFood.</p>
+            <p class="text-gray-400 text-sm">© 2026 iFamily - Programa de Parentalidade iFood.</p>
         </div>
     </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'ifamily-portal';
+
+        let currentUser = null;
+
+        const initAuth = async () => {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                
+                onAuthStateChanged(auth, (user) => {
+                    currentUser = user;
+                    if (user) {
+                        loadMural();
+                    }
+                });
+            } catch (error) {
+                console.error("Erro na autenticação Firebase:", error);
+            }
+        };
+        initAuth();
+
+        window.handleMuralSubmit = async (e) => {
+            e.preventDefault();
+            if (!currentUser) return;
+
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+            const fileInput = document.getElementById('mural-foto');
+            const bebeInput = document.getElementById('mural-bebe');
+            const maeInput = document.getElementById('mural-mae');
+            const dataInput = document.getElementById('mural-nascimento');
+
+            btnText.classList.add('hidden');
+            btnLoading.classList.remove('hidden');
+
+            try {
+                const file = fileInput.files[0];
+                if (!file) throw new Error("Selecione uma foto");
+
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async () => {
+                    const base64Image = reader.result;
+
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'mural'), {
+                        bebe: bebeInput.value,
+                        mae: maeInput.value,
+                        data: dataInput.value,
+                        foto: base64Image,
+                        timestamp: Date.now(),
+                        userId: currentUser.uid
+                    });
+
+                    e.target.reset();
+                    document.getElementById('file-label').innerText = "Selecionar arquivo";
+                    btnText.classList.remove('hidden');
+                    btnLoading.classList.add('hidden');
+                };
+            } catch (error) {
+                console.error("Erro ao publicar:", error);
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        };
+
+        function loadMural() {
+            if (!currentUser) return;
+
+            const muralList = document.getElementById('mural-list');
+            const q = collection(db, 'artifacts', appId, 'public', 'data', 'mural');
+            
+            onSnapshot(q, (snapshot) => {
+                const posts = [];
+                snapshot.forEach(doc => posts.push(doc.data()));
+                posts.sort((a, b) => b.timestamp - a.timestamp);
+
+                if (posts.length === 0) {
+                    muralList.innerHTML = `
+                        <div class="col-span-full py-20 text-center text-gray-400 bg-gray-50 rounded-3xl border border-dashed">
+                            <i class="fa-solid fa-baby-carriage text-5xl mb-4 block opacity-20"></i>
+                            <p class="font-medium">O mural ainda está vazio. Seja a primeira pessoa a postar!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                muralList.innerHTML = posts.map(post => `
+                    <div class="baby-card">
+                        <div class="h-64 overflow-hidden bg-gray-100">
+                            <img src="${post.foto}" class="w-full h-full object-cover" alt="Foto do bebê">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-black text-ifood-red mb-1 uppercase tracking-tight">${post.bebe}</h4>
+                            <div class="space-y-2">
+                                <p class="text-xs text-gray-500 font-bold flex items-center gap-2">
+                                    <i class="fa-solid fa-calendar-day text-ifood-dark"></i> Nascido(a) em: ${formatDate(post.data)}
+                                </p>
+                                <p class="text-xs text-gray-500 font-bold flex items-center gap-2">
+                                    <i class="fa-solid fa-heart text-ifood-dark"></i> Mãe: ${post.mae}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }, (err) => {
+                console.error("Erro no listener do mural:", err);
+            });
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + "T00:00:00");
+            return d.toLocaleDateString('pt-BR');
+        }
+
+        document.getElementById('mural-foto').addEventListener('change', function(e) {
+            const label = document.getElementById('file-label');
+            if(this.files && this.files[0]) label.innerText = this.files[0].name;
+        });
+    </script>
 
     <script>
         let currentView = 'voce';
 
         function switchView(viewId) {
-            const views = ['voce', 'lideranca', 'licencas', 'luto', 'elegibilidade'];
+            const views = ['voce', 'lideranca', 'licencas', 'luto', 'elegibilidade', 'mural'];
             views.forEach(v => {
                 const el = document.getElementById('view-' + v);
                 if(el) el.classList.add('hidden-view');
@@ -864,13 +1333,16 @@
         }
 
         function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            if(menu) menu.classList.toggle('hidden');
         }
 
         function toggleModal(id) {
             const modal = document.getElementById(id);
-            modal.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
+            if(modal) {
+                modal.classList.toggle('hidden');
+                document.body.classList.toggle('overflow-hidden');
+            }
         }
 
         window.addEventListener('scroll', () => {
@@ -880,7 +1352,7 @@
             let current = "";
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 250) {
+                if (window.pageYOffset >= sectionTop - 250) {
                     current = section.getAttribute('id');
                 }
             });
